@@ -1,49 +1,121 @@
+{{!-- wrapper to set up background image --}}
+<section>
+  {{!-- set up container  --}}
+<div class="container justify-content-center">
+  {{!-- row 1- jumbotron --}}
 <div class="row justify-content-center">
-  <h1>Eat Da Burger</h1>
+  {{!-- jumbotron start --}}
+  <div class="jumbotron glow">
+    {{!-- header --}}
+     <h1 style="font-size: 100px;">Eat-da-Burger</h1> 
+   </div>         
+   {{!-- end jumbotron --}}
 </div>
+{{!-- end row 1  --}}
+{{!-- begin row two --}}
 <div class="row justify-content-center ">
-  {{!-- burgers to eat --}}
-  <div class="col-sm-6 justify-content-center">
-    <h2>Burgers to Eat</h2>
-     <ul>
-        {{#each burgers}} {{#unless this.devoured}}
-        <li>
-            {{this.id}}. {{this.burgerName}}
-
-             <button type="button" class="eatburger btn btn-dark" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devoured}}"><span class="fa fa-cutlery"></span></button>
-
-
-        </li>
-        {{/unless}} {{/each}}
-    </ul>
-  </div>
-  {{!-- end burgers to eat  --}}
-  {{!-- burgers that have been eaten --}}
-  <div class="col-sm-6 justify-content-center">
-    <h2>Burgers Devoured</h2>
-     <ul>
-        {{#each burgers}} {{#if this.devoured}}
-        <li>
-            {{this.id}}. {{this.burgerName}}
-        </li>
-        {{/if}} {{/each}}
+  {{!-- begin add a burger --}}
+  <div class="col-sm-4 justify-content-center">
+    {{!-- insert card --}}
+    <div class="card" style="width: 18rem;">
+      {{!-- begin card header  --}}
+      <div class="card-header">
+       <h2>Build a Burger</h2>
+      </div>
+      {{!-- end card header  --}}
+      {{!-- begin card body --}}
+      <ul class="list-group list-group-flush">
+        {{!-- begin li --}}
+        <li class="list-group-item">
+          {{!-- begin form  --}}
+          <form class="create-update-form" action="/" method="POST">
+          {{!-- begin label --}}
+            <div class="form-group">
+              <label for="dab">Burger Name:</label>
+              <input type="text" id="dab" name="burgerName">
+            </div>
+            {{!-- end label --}}
+            {{!-- submit button  --}}
+            <button class="btn btn-dark" type="submit">Add Burger</button>
+            {{!-- submit Button --}}
+          </form>
+          {{!-- end form  --}}
+         </li>
+         {{!-- end li --}}
       </ul>
+      {{!-- end ul --}}
+    </div>
+    {{!-- end card  --}}
+  </div>
+  {{!-end add burger-  --}}
+  {{!-- burgers to eat  --}}
+  <div class="col-sm-4">
+    {{!-- begin card body  --}}
+    <div class="card" style="width: 18rem;">
+    {{!-- begin card header --}}
+    <div class="card-header">
+    <h2>Burgers to Eat</h2>
+    </div>
+    {{!-- end card header --}}
+    {{!-- begin card body  --}}
+    <ul class="list-group list-group-flush">
+      {{!-- params --}}
+     {{#each burgers}} {{#unless this.devoured}}
+      <li class="list-group-item">
+          {{this.id}}. {{this.burgerName}}
+
+          <button type="button" class="eatburger btn btn-dark" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devoured}}"><span class="fa fa-cutlery"></span></button>
+
+      </li>
+      {{!-- end li --}}
+      {{/unless}} {{/each}}
+      {{!-- end params --}}
+    </ul>
+    {{!-- end ul --}}
+    </div>
+    {{!-- end card body --}}
+  </div>
+  {{!-- burgers that have been eaten --}}
+  <div class="col-sm-4 justify-content-left">
+    {{!-- begin card  --}}
+    <div class="card" style="width: 18rem;">
+      {{!-- begin card header  --}}
+    <div class="card-header">
+    <h2>Burgers Eaten</h2>
+    </div>
+    {{!-- end card header  --}}
+    {{!-- begin card body  --}}
+      <ul class="list-group list-group-flush">
+        {{!-- begin params --}}
+        {{#each burgers}} {{#if this.devoured}}
+          <li class="list-group-item">
+            {{this.id}}. {{this.burgerName}}
+          </li>
+          {{/if}} {{/each}}
+          {{!-- end params --}}
+      </ul>
+      {{!-- end card body --}}
+    </div>
+    {{!-- end card  --}}
+    </div>
+    {{!-- end eaten burgers --}}
+</div>
+{{!-- end row 2  --}}
+{{!-- begin row 3 --}}
+<div class="row">
+  <div class="footer">
+  <p>By: Laura DiTommaso</p>
   </div>
 </div>
-{{!-- end eaten burgers --}}
-{{!-- add a burger --}}
-<div class="row justify-content-center">
-  <div class="col justify-content-center">
-    <h2>Build a Burger</h2>
-     <form class="create-update-form" action="/" method="POST">
-        <div class="form-group">
-            <label for="dab">Burger Name:</label>
-            <input type="text" id="dab" name="burgerName">
-        </div>
-        <button class="btn btn-primary" type="submit">Add Burger</button>
-    </form>
-  </div>
+{{!-- end row 3 --}}
 </div>
+{{!-- end container div  --}}
+</section>
+{{!-- end section wraper --}}
+
+
+
+
 
 
 

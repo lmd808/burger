@@ -1,82 +1,38 @@
-// var express = require('express');
-
-// var router = express.Router();
-
-// // Import the model (cat.js) to use its database functions.
-// var cat = require('../models/burger.js');
-
-// // Create all our routes and set up logic within those routes where required.
-// router.get('/', function(req, res) {
-// 	cat.all(function(data) {
-// 		var hbsObject = {
-// 			cats: data
-// 		};
-// 		console.log(hbsObject);
-// 		res.render('index', hbsObject);
-// 	});
-// });
-
-// router.post('/api/burger', function(req, res) {
-// 	burger.create([ 'burgerName', "Hot n' Heavy" ], [ req.body.burgerName, req.body.devoured ], function(result) {
-// 		// Send back the ID of the new quote
-// 		res.json({ id: result.insertId });
-// 	});
-// });
-
-// router.put('/api/burger/:id', function(req, res) {
-// 	var condition = 'id = ' + req.params.id;
-
-// 	console.log('condition', condition);
-
-// 	burger.update(
-// 		{
-// 			devoured: req.body.devoured
-// 		},
-// 		condition,
-// 		function(result) {
-// 			if (result.changedRows == 0) {
-// 				// If no rows were changed, then the ID must not exist, so 404
-// 				return res.status(404).end();
-// 			} else {
-// 				res.status(200).end();
-// 			}
-// 		}
-// 	);
-// });
-
-// // Export routes for server.js to use.
-// module.exports = router;
-
+// require express
 var express = require('express');
-
+// require router
 var router = express.Router();
-
+// require burger
 var burger = require('../models/burger.js');
+// set up our routes
 
+// Get request
 router.get('/', function(req, res) {
+	// select all burgers and load them
 	burger.selectAll(function(data) {
+		// create object ot hold data
 		var hbsObject = {
 			burgers: data
 		};
-		console.log(hbsObject);
+		// use that data in the params of our get request (the remaining params left blank from the burger .js model)
 		res.render('index', hbsObject);
 	});
 });
 
+// post request
 router.post('/', function(req, res) {
+	// add the burger from out add burger section to the file
 	burger.insertOne(req.body.burgerName, function() {
 		res.redirect('/');
 	});
 });
-
+// put request
 router.put('/api/burger/:id', function(req, res) {
+	// create condition variable
 	var condition = 'id = ' + req.params.id;
-
-	console.log('condition', condition);
-
+	// change a burger from not eaten to eaten
 	burger.updateOne({ devoured: req.body.devoured }, condition, function(result) {
 		if (result.changedRows === 0) {
-			// If no rows were changed, then the ID must not exist, so 404.
 			return res.status(404).end();
 		} else {
 			res.status(200).end();

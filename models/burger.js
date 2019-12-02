@@ -1,42 +1,24 @@
-// // Import the ORM to create functions that will interact with the database.
-// var orm = require('../config/orm.js');
-
-// var burger = {
-// 	all: function(cb) {
-// 		orm.all('burger', function(res) {
-// 			cb(res);
-// 		});
-// 	},
-// 	// The variables cols and vals are arrays.
-// 	create: function(cols, vals, cb) {
-// 		orm.create('burger', cols, vals, function(res) {
-// 			cb(res);
-// 		});
-// 	},
-// 	update: function(objColVals, condition, cb) {
-// 		orm.update('burger', objColVals, condition, function(res) {
-// 			cb(res);
-// 		});
-// 	}
-// };
-
-// // Export the database functions for the controller (catsController.js).
-// module.exports = burger;
-
-//importing the ORM to create the functions that will interact with the database
+//importing the ORM so we can query the burger_db database
 var orm = require('../config/orm.js');
 
+// burger object pulls in the orm functions
+// here we put in the call back function parameter values from the original orm file
+// we "fill in" the majority of the parameters in this file.
+// the rest of the params will be given to the function in the burger controller file
 var burger = {
+	// select all
 	selectAll: function(cb) {
 		orm.selectAll(function(res) {
 			cb(res);
 		});
 	},
+	// insert 1
 	insertOne: function(burger, cb) {
 		orm.insertOne(burger, function(res) {
 			cb(res);
 		});
 	},
+	// update 1
 	updateOne: function(objColVals, condition, cb) {
 		orm.updateOne('burger', objColVals, condition, function(res) {
 			cb(res);
@@ -44,4 +26,5 @@ var burger = {
 	}
 };
 
+// export burger
 module.exports = burger;
