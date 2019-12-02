@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <h1>Eat Da Burger</h1>
+</div>
+<div class="row justify-content-center ">
+  {{!-- burgers to eat --}}
+  <div class="col-sm-6 justify-content-center">
+    <h2>Burgers to Eat</h2>
+     <ul>
+        {{#each burgers}} {{#unless this.devoured}}
+        <li>
+            {{this.id}}. {{this.burgerName}}
+
+             <button type="button" class="eatburger btn btn-dark" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devoured}}"><span class="fa fa-cutlery"></span></button>
+
+
+        </li>
+        {{/unless}} {{/each}}
+    </ul>
+  </div>
+  {{!-- end burgers to eat  --}}
+  {{!-- burgers that have been eaten --}}
+  <div class="col-sm-6 justify-content-center">
+    <h2>Burgers Devoured</h2>
+     <ul>
+        {{#each burgers}} {{#if this.devoured}}
+        <li>
+            {{this.id}}. {{this.burgerName}}
+        </li>
+        {{/if}} {{/each}}
+      </ul>
+  </div>
+</div>
+{{!-- end eaten burgers --}}
+{{!-- add a burger --}}
+<div class="row justify-content-center">
+  <div class="col justify-content-center">
+    <h2>Build a Burger</h2>
+     <form class="create-update-form" action="/" method="POST">
+        <div class="form-group">
+            <label for="dab">Burger Name:</label>
+            <input type="text" id="dab" name="burgerName">
+        </div>
+        <button class="btn btn-primary" type="submit">Add Burger</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
