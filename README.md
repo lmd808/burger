@@ -25,7 +25,7 @@ There may come a day where you want to make up a name for a burger, add it to a 
 
 ## Demo
 
-Check Out a Quick Demo Below: 
+* Check Out a Quick Demo Below: 
 ![Gif](./demo.gif)
 
 ## Links 
