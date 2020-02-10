@@ -39,5 +39,5 @@ There may come a day where you want to make up a name for a burger, add it to a 
 * I think I will go all out and make a demo food service application 
 
 # Creator 
-Laura DiTommaso 
+Laura DiTommaso [GitHub](https://github.com/lmd808)
 
